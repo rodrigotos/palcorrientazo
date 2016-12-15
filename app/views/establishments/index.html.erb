@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="text-center"> Establishments </h1>
+  <section class="row text-center cities-controls">
+      <a href="<%= new_establishment_path %>" class="btn btn-default"> New Establishment </a>
+  </section>
+  <% @establishments.each do |e| %>
+    <article class="row city">
+      <ul>
+        <li class="col-md-2"><strong><%= e.name %></strong></li>
+        <li class="col-md-2"><strong><%= e.zone %></strong></li>
+        <li class="col-md-2"><strong><%= e.price %></strong></li>
+        <li class="col-md-2"><strong><%= e.avg_qualification %></strong></li>
+        <li class="col-md-2"><strong><%= e.like_count %></strong></li>
+        <li class="col-md-1"><a href="<%= establishment_path(e.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+        <li class="col-md-1"><a href="<%= edit_establishment_path(a.id) %>" class="btn btn-primary"> Edit </a></li>
+        <li class="col-md-1"><a href="<%= establishment_path(a.id) %>" class="btn btn-info"> Show </a></li>
+      </ul>
+    </article>
+  <% end if @establishments.any? %>
+</div>
