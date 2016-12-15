@@ -37,7 +37,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><p class="navbar-text">¿Ya tienes cuenta?</p></li>
           <li class="link">
-            <a href="#" class="link"><b>Login</b></a>
+            <a href="<%= new_user_session_path %>" class="link"><b>Login</b></a>
   			  </li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -86,7 +86,7 @@
             <li class="col-md-2"><strong><%= e.price %></strong></li>
             <li class="col-md-2"><strong><%= e.avg_qualification %></strong></li>
             <li class="col-md-2"><strong><%= e.like_count %></strong></li>
-          
+
           </ul>
         </article>
       <% end if @establishments.any? %>
