@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "static_pages#welcome"
+  resources :establishments
   devise_for :users, controllers: {
          sessions: 'users/sessions',
          passwords: 'users/passwords',

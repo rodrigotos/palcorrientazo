@@ -1,8 +1,6 @@
 var map;
 var infowindow;
 
-
-
  //Creacion del mapa con los parametros de zonnn y declaracion de variables a utilizar
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -11,11 +9,11 @@ function initMap() {
   });
   var infoWindow = new google.maps.InfoWindow({map: map});
   var geocoder = new google.maps.Geocoder();
+  
 
-  document.getElementById('submit').addEventListener('click', function() {
+document.getElementById('submit').addEventListener('click', function() {
     geocodeAddress(geocoder, map);
   });
-
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -36,6 +34,7 @@ function initMap() {
   }
 }
 
+
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
@@ -45,7 +44,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
   //funcion que me permite geolocalizar la direccion
-  function geocodeAddress(geocoder, resultsMap) {
+function geocodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
