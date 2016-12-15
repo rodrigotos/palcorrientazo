@@ -15,6 +15,7 @@ class EstablishmentsController < ApplicationController
   end
 
   def index
+    @establishments = Establishment.all
   end
 
   def show
