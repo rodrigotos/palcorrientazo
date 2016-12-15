@@ -9,7 +9,7 @@ function initMap() {
   });
   var infoWindow = new google.maps.InfoWindow({map: map});
   var geocoder = new google.maps.Geocoder();
-  
+
 
 document.getElementById('submit').addEventListener('click', function() {
     geocodeAddress(geocoder, map);
@@ -51,16 +51,28 @@ function geocodeAddress(geocoder, resultsMap) {
       resultsMap.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
         map: resultsMap,
-        position: results[0].geometry.location
-
+        position: results[0].geometry.location,
+        draggable:true
       });
-  	  <!-- console.log("Coordenadas:"+results[0].geometry.location); -->
+      google.maps.event.addListener(marker, 'dragend', function(evt){
+          latitude.value = evt.latLng.lat().toFixed(3);
+          longitude.value = evt.latLng.lng().toFixed(3);
+      });
   	  var lng = results[0].geometry.location.lng();
   	  var lat = results[0].geometry.location.lat();
-
+      latitude.value = lat;
+      longitude.value = lng;
   	  console.log("longitude : ",lng ,"latitude : ", lat);
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function(){
+  var longitude = document.querySelector("#longitude");
+  var latitude = document.querySelector("#latitude");
+  console.log(longitude, latitude);
+});
