@@ -37,7 +37,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><p class="navbar-text">¿Ya tienes cuenta?</p></li>
           <li class="link">
-            <a href="#" class="link"><b>Login</b></a>
+            <a href="<%= new_user_session_path %>" class="link"><b>Login</b></a>
   			  </li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -76,6 +76,19 @@
   				<span class="cs_thumb"><img src="https://github.com/znafu/corrientazostyle/blob/master/images/dsc09177-edited-2.jpg?raw=true" alt="colombian-almuerzo" title="colombian-almuerzo"></span></label>
   		</div>
   		</div>
+
   		<!-- End cssSlider.com -->
+      <% @establishments.each do |e| %>
+        <article class="row city">
+          <ul>
+            <li class="col-md-2"><strong><%= e.name %></strong></li>
+            <li class="col-md-2"><strong><%= e.zone %></strong></li>
+            <li class="col-md-2"><strong><%= e.price %></strong></li>
+            <li class="col-md-2"><strong><%= e.avg_qualification %></strong></li>
+            <li class="col-md-2"><strong><%= e.like_count %></strong></li>
+
+          </ul>
+        </article>
+      <% end if @establishments.any? %>
 </body>
 </html>
