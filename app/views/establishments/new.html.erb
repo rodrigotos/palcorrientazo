@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-
-<h1>New Task</h1>
-<div class="container">
-  <%= render "form" , form_name: params[:action].capitalize %>
+<div class="span6">
+  <div class="container">
+    <%= render "form" , form_name: params[:action].capitalize %>
+  </div>
 </div>
-<div id="floating-panel">
-      <input id="address" type="textbox">
-      <input id="submit" type="button" value="Ubicar la direccion">
+<div class="span6">
+  <div id="floating-panel">
+        <input id="address" type="textbox">
+        <input id="submit" type="button" value="Ubicar la direccion">
+        <!-- div donde se dibuja el mapa-->
+        <div id="map" style="width:450px;height:300px;"></div>
+  </div>
 </div>
-<!-- div donde se dibuja el mapa-->
-<div id="map" style="width:450px;height:300px;"></div>

@@ -7,4 +7,6 @@ class Establishment < ApplicationRecord
   has_many :user_likes, through: :likes
 
   belongs_to :user, class_name: "User", foreign_key: "user_id"
+
+  validates :name, :zone, :price, :category, :description,  presence: true
 end

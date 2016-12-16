@@ -23,17 +23,25 @@
     <%= f.label :zone%>
     <select name="establishment[zone]" >
       <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
-      <option value="<%= a %>"> <%= "#{a.downcase}" %> </option>
+      <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
       <% end %>
     </select>
   </div>
   <div class="form-group">
     <%= f.label :longitude%>
-    <%= f.number_field :longitude, class: "form-control" ,id:"longitude"%>
+    <%= f.number_field :longitude, class: "form-control" ,id:"longitude", :step => "0.001", disabled: true%>
   </div>
   <div class="form-group">
     <%= f.label :latitude%>
-    <%= f.number_field :latitude, class: "form-control", id:"latitude" %>
+    <%= f.number_field :latitude, class: "form-control", id:"latitude", :step => "0.001", disabled: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :category%>
+    <select name="establishment[category]" >
+      <% ["Vegetariano", "Casero", "Ejecutivo", "Especial"].each do |a| %>
+      <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
+      <% end %>
+    </select>
   </div>
   <div class="form-group">
     <%= f.label :description%>
