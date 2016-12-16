@@ -1,5 +1,7 @@
 var establishments_list_element = document.querySelector("#establishments_list");
 if(establishments_list_element !== null){
   $("input[name='establishment_general_name']").attr("value", "<%= @establishment_name %>")
+  $("input[name='establishment_zone']").attr("value", "<%= @zone %>")
+  $("input[name='establishment_likes']").attr("value", "<%= @likes %>")
   $(establishments_list_element).html("<%= j render 'establishments/shared/list_elements', establishments: @establishments %>")
 }

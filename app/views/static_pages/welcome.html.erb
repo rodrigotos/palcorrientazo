@@ -29,6 +29,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <%= form_tag search_by_name_establishments_path, method: :get, class: "navbar-form navbar-left", remote: true do %>
+        <input type="hidden" name="establishment_general_name" value="">
         <div class="form-group">
           <input name="establishment_name" type="text" class="form-control" placeholder="Search">
         </div>
@@ -82,8 +83,24 @@
 
   		<!-- End cssSlider.com -->
       <section>
-        <%= form_tag general_search_establishments_path, method: :get, class: "search-form" do %>
-          
+        <%= form_tag general_search_establishments_path, method: :get, remote: true, class: "search-form", id: "establishment-general-search" do %>
+        <div class="form-group">
+          <div class="form-group">
+            <%= label_tag :zone%>
+            <select name="establishment_zone" >
+              <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
+              <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
+              <% end %>
+            </select>
+          </div>
+          <div class="form-group">
+            <%= label_tag :likes%>
+            <input style="width:20%;"name="establishment_likes" type="range" max="100" min="0" sept="1">
+          </div>
+          <!-- SANTI NI POR EL PUTAS QUITE ESTO-->
+          <button type="submit" id="establishment-general-search-button" style="display:none;"></button>
+          <button type="button" id="clean-general-search-button" class="btn btn-warning"> Limpiar filtro </button>
+        </div>
         <% end %>
       </section>
       <section id="establishments_list">
