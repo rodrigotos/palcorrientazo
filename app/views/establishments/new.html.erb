@@ -1,10 +1,12 @@
-<h1>Establishments#new</h1>
-<p>Find me in app/views/establishments/new.html.erb</p>
 <!DOCTYPE html>
- <div id="floating-panel">
+
+<h1>New Task</h1>
+<div class="container">
+  <%= render "form" , form_name: params[:action].capitalize %>
+</div>
+<div id="floating-panel">
       <input id="address" type="textbox">
       <input id="submit" type="button" value="Ubicar la direccion">
-   </div>
-
+</div>
 <!-- div donde se dibuja el mapa-->
 <div id="map" style="width:450px;height:300px;"></div>

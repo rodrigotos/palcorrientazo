@@ -1,26 +1,48 @@
 <% form_name ||= "Manage" %>
-<h1 class="text-center">  <%= form_name %> notebook </h1>
-<%= form_for @notebooks , method: (form_name.downcase == 'edit' ? 'put' : 'post') do |f| %>
-  <% if @notebooks.errors.any? %>
-      <div id="error_explanation">
+<h1 class="text-center">  <%= form_name %> Establishment </h1>
+<%= form_for @establishment , method: (form_name.downcase == 'edit' ? 'put' : 'post') do |f| %>
+  <% if @establishment.errors.any? %>
+      <div class="error" id="error_explanation">
         <h2>
-          <%= pluralize(@notebooks.errors.count, "error") %> prohibited
+          <i class="fa fa-times-circle"></i>
+          <%= pluralize(@establishment.errors.count, "error") %> prohibited
           this article from being saved:
         </h2>
         <ul>
-          <% @notebooks.errors.full_messages.each do |msg| %>
+          <% @establishment.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
       </div>
     <% end %>
   <div class="form-group">
-
-    <label>Name Notebook</label>
+    <%= f.label :name%>
     <%= f.text_field :name, class: "form-control" %>
-    <%= f.label :Propietario %>
-    <input type="text" class: "form-control" value=<%=current_user.email%> id="cantidad" readonly="readonly"></input>
   </div>
-  <%= f.submit "#{form_name} notebook", class: "btn btn-primary" %>
-  <a href="<%= notebooks_path %>" class="btn btn-default"> View all </a>
+  <div class="form-group">
+    <%= f.label :zone%>
+    <select name="establishment[zone]" >
+      <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
+      <option value="<%= a %>"> <%= "#{a.downcase}" %> </option>
+      <% end %>
+    </select>
+  </div>
+  <div class="form-group">
+    <%= f.label :longitude%>
+    <%= f.number_field :longitude, class: "form-control" ,id:"longitude"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :latitude%>
+    <%= f.number_field :latitude, class: "form-control", id:"latitude" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description%>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price%>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+  <%= f.submit "#{form_name} task", class: "btn btn-lg boton-color btn-block" %>
+  <a href="<%= establishments_path %>" class="btn btn-lg boton-color-dos btn-block"> View all </a>
 <% end %>
