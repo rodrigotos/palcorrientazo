@@ -58,7 +58,7 @@ class EstablishmentsController < ApplicationController
       "like_count <= ? and like_count > 0", @likes.to_i
     )
   end
-  
+
   private
 
     def establishment_params
