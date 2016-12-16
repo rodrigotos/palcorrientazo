@@ -1,0 +1,4 @@
+var establishments_list_element = document.querySelector("#establishments_list");
+if(establishments_list_element !== null){
+  $(establishments_list_element).html("<%= j render 'establishments/shared/list_elements', establishments: @establishments %>")
+}

@@ -20,4 +20,13 @@ class EstablishmentsController < ApplicationController
 
   def show
   end
+
+  def search_by_name
+    @establishments = []
+    @establishments = Establishment.where("name LIKE ?", "%#{params[:establishment_name]}%" ) unless params[:establishment_name].blank?
+  end
+
+  def search_by_zona
+  end 
+
 end
