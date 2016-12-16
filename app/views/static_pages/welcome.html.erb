@@ -28,16 +28,20 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        <%= form_tag search_by_name_establishments_path, method: :get, class: "navbar-form navbar-left", remote: true do %>
+        <input type="hidden" name="establishment_general_name" value="">
+        <div class="form-group">
+          <input name="establishment_name" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        <% end %>
         <ul class="nav navbar-nav navbar-right">
           <li><p class="navbar-text">¿Ya tienes cuenta?</p></li>
           <li class="link">
-            <a href="<%= new_user_session_path %>" class="link"><b>Login</b></a>
+            <a href="<%= new_user_session_path %>" class="link"><b>Sing In</b></a>
+  			  </li>
+          <li class="link">
+            <a href="<%= new_user_registration_path %>" class="link"><b>Sign Up</b></a>
   			  </li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -78,17 +82,28 @@
   		</div>
 
   		<!-- End cssSlider.com -->
-      <% @establishments.each do |e| %>
-        <article class="row city">
-          <ul>
-            <li class="col-md-2"><strong><%= e.name %></strong></li>
-            <li class="col-md-2"><strong><%= e.zone %></strong></li>
-            <li class="col-md-2"><strong><%= e.price %></strong></li>
-            <li class="col-md-2"><strong><%= e.avg_qualification %></strong></li>
-            <li class="col-md-2"><strong><%= e.like_count %></strong></li>
-
-          </ul>
-        </article>
-      <% end if @establishments.any? %>
+      <section>
+        <%= form_tag general_search_establishments_path, method: :get, remote: true, class: "search-form", id: "establishment-general-search" do %>
+        <div class="form-group">
+          <div class="form-group">
+            <%= label_tag :zone%>
+            <select name="establishment_zone" >
+              <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
+              <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
+              <% end %>
+            </select>
+          </div>
+          <div class="form-group">
+            <%= label_tag :likes%>
+            <input style="width:20%;"name="establishment_likes" type="range" max="100" min="0" sept="1">
+          </div>
+          <!-- SANTI NI POR EL PUTAS QUITE ESTO-->
+          <button type="submit" id="establishment-general-search-button" style="display:none;"></button>
+          <button type="button" id="clean-general-search-button" class="btn btn-warning"> Limpiar filtro </button>
+        </div>
+        <% end %>
+      </section>
+      <section id="establishments_list">
+      </section>
 </body>
 </html>
