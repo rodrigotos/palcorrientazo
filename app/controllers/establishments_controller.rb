@@ -61,7 +61,7 @@ class EstablishmentsController < ApplicationController
 
   private
 
-    def establishment_params
+  def establishment_params
       params.require(:establishment).permit(:name, :zone, :longitude, :latitude, :description, :price, :category)
-
+  end
 end
