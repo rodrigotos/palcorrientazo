@@ -1,6 +1,6 @@
 class EstablishmentsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!,  :except => [:general_search, :search_by_name]
 
   def new
       @establishment = Establishment.new
@@ -47,6 +47,11 @@ class EstablishmentsController < ApplicationController
   end
 
   def show
+    @establishment = Establishment.find_by(id: params[:id])
+    if @establishment.nil?
+    flash[:error] = "Houston we are in troubles, please dont hack us."
+    redirect_to root_path
+  end
   end
 
   def search_by_name
