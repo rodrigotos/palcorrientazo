@@ -1,36 +1,40 @@
-<h1><%= "#{@establishment.name.capitalize }" %> </h1>
-<div class="container">
-  <article class="row city">
-    <div class="form-group">
-      <label> Zone:</label>
-      <label><%= @establishment.zone.capitalize %></label>
-    </div>
-    <div class="form-group">
-      <label> Price:</label>
-      <label><%= @establishment.price %></label>
-    </div>
-    <div class="form-group">
-      <label> Description:</label>
-      <text><%= @establishment.description %></text>
-    </div>
-  </article>
-</div>
-<%= form_for @qualification, url: create_qualification_establishment_path(@establishment), html: {class: "nifty_form"} do |f| %>
-  <div class="form-group">
-    <%= f.label :qualification%>
-    <select name="qualification[qualification]" >
-      <% ["1", "2", "3", "4", "5"].each do |qu| %>
-      <option value="<%= qu.downcase %>"> <%= "#{Integer(qu)}" %> </option>
-      <% end %>
-    </select>
-  </div>
-  <div class="form-group">
-    <%= f.label :comment%>
-    <%= f.text_area :comment, class: "form-control" %>
-  </div>
-  <%= f.submit "Qualify", class: "btn btn-lg boton-color btn-block" %>
-<% end %>
 
+<div class="container">
+  <h1 class="text-center"><%= "#{@establishment.name.capitalize }" %> </h1>
+  <hr>
+  <div class="form-group">
+    <label> Zone:</label>
+    <label><%= @establishment.zone.capitalize %></label>
+  </div>
+  <div class="form-group">
+    <label> Price:</label>
+    <label><%= @establishment.price %></label>
+  </div>
+  <div class="form-group">
+    <label> Description:</label>
+    <text><%= @establishment.description %></text>
+  </div>
+  <hr>
+</div>
+<div class="container">
+  <h3 class="text-center">Add your qualification</h3>
+  <%= form_for @qualification, url: create_qualification_establishment_path(@establishment), html: {class: "nifty_form"} do |f| %>
+    <div class="form-group">
+      <%= f.label :qualification%>
+      <select name="qualification[qualification]" >
+        <% ["1", "2", "3", "4", "5"].each do |qu| %>
+        <option value="<%= qu.downcase %>"> <%= "#{Integer(qu)}" %> </option>
+        <% end %>
+      </select>
+    </div>
+    <div class="form-group">
+      <%= f.label :comment%>
+      <%= f.text_area :comment, class: "form-control" %>
+    </div>
+    <%= f.submit "Qualify", class: "btn btn-lg boton-color btn-block" %>
+  <% end %>
+  <hr>
+</div>
 <% if @qualifications.any?  %>
   <div class="container">
     <table class="table">
