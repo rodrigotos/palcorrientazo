@@ -1,7 +1,7 @@
 <% establishments.each do |e| %>
 <article class="row city">
 <ul class="list-unstyled" >
-  <li class="col-md-2"><strong><%= e.name %></strong></li>
+  <li class="col-md-2">Nombre<strong><%= e.name %></strong></li>
   <li class="col-md-2"><strong><%= e.zone %></strong></li>
   <li class="col-md-2"><strong><%= e.price %></strong></li>
   <li class="col-md-2"><strong><%= e.avg_qualification %></strong></li>
@@ -13,6 +13,7 @@
   <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
   <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
   </div>
+
   <button type="button" class="btn btn-primary" name="button">Calificar</button>
 
 </ul>
