@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<div class="span6">
   <div class="container">
     <%= render "form" , form_name: params[:action].capitalize %>
   </div>
-</div>
-<div class="span6">
+
+<div class="text-center">
   <div id="floating-panel">
         <input id="address" type="textbox">
         <input id="submit" type="button" value="Ubicar la direccion">
         <!-- div donde se dibuja el mapa-->
-        <div id="map" style="width:450px;height:300px;"></div>
+        <div id="map" style="left:40%;width:450px;height:300px;"></div>
   </div>
 </div>
