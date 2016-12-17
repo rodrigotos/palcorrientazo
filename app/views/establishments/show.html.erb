@@ -15,3 +15,40 @@
     </div>
   </article>
 </div>
+<%= form_for @qualification, url: create_qualification_establishment_path(@establishment), html: {class: "nifty_form"} do |f| %>
+  <div class="form-group">
+    <%= f.label :qualification%>
+    <select name="qualification[qualification]" >
+      <% ["1", "2", "3", "4", "5"].each do |qu| %>
+      <option value="<%= qu.downcase %>"> <%= "#{Integer(qu)}" %> </option>
+      <% end %>
+    </select>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment%>
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  <%= f.submit "Qualify", class: "btn btn-lg boton-color btn-block" %>
+<% end %>
+
+<% if @qualifications.any?  %>
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th class="col-md-2">User</th>
+        <th class="col-md-2">Qualification</th>
+        <th class="col-md-8">Comment</th>
+      </tr>
+    </table>
+    <table class="table table-striped">
+      <% @qualifications.each do |q| %>
+      <tr>
+        <td class="col-md-2"><strong><%= q.user.email %></strong></td>
+        <td class="col-md-2"><strong><%= q.qualification %></strong></td>
+        <td class="col-md-8"><%= q.comment %></td>
+      </tr>
+      <% end if @qualifications.any? %>
+    </table>
+  </div>
+<% end %>
+<a href="<%= root_path %>" class="btn btn-lg boton-color-dos btn-block"> Return </a>

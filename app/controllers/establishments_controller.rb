@@ -10,6 +10,8 @@ class EstablishmentsController < ApplicationController
     @establishment = Establishment.new(establishment_params)
     @establishment.user = current_user
     @establishment.state = true
+    @establishment.avg_qualification = 0
+    @establishment.like_count = 0
     if @establishment.save
         flash[:success] = "Establishment created. Ok"
         redirect_to establishments_path
@@ -48,6 +50,8 @@ class EstablishmentsController < ApplicationController
 
   def show
     @establishment = Establishment.find_by(id: params[:id])
+    @qualifications = Qualification.includes(:user).where(establishment_id: params[:id]).all
+    @qualification = Qualification.new
     if @establishment.nil?
     flash[:error] = "Houston we are in troubles, please dont hack us."
     redirect_to root_path
@@ -74,9 +78,33 @@ class EstablishmentsController < ApplicationController
     )
   end
 
+  def create_qualification
+    @establishment = Establishment.find(params[:id])
+    @qualification = Qualification.new(qualifitacion_params)
+    @qualification.user_id = current_user.id
+    @qualification.establishment_id = @establishment.id
+    if @qualification.save
+        #Consultar todas las calificaciones de ese y sacar el promedio para actualizarlo
+        @count_qualifications = Qualification.where(establishment_id: @establishment.id).all.count
+        @qualifitacion_avg = ((@establishment.avg_qualification * (@count_qualifications - 1)) + @qualification.qualification) / @count_qualifications
+        @establishment.avg_qualification = @qualifitacion_avg
+        if @establishment.save
+          flash[:success] = "Have you rated the establishment"
+        else
+          flash[:error] = "Houston we are in troubles, try it again."
+        end
+    end
+    redirect_to establishment_path(@establishment)
+  end
+
   private
 
   def establishment_params
       params.require(:establishment).permit(:name, :zone, :longitude, :latitude, :description, :price, :category)
   end
+
+  def qualifitacion_params
+    params.require(:qualification).permit(:qualification, :comment)
+  end
+
 end

@@ -3,25 +3,26 @@
   <section class="row text-center cities-controls">
       <a href="<%= new_establishment_path %>" class="btn btn-default"> New Establishment </a>
   </section>
+  <hr></hr>
   <table class="table">
     <tr>
-      <th>Nombre</th>
-      <th>Zona</th>
-      <th>Precio</th>
-      <th>Estrellas</th>
-      <th>Likes</th>
-      <th>Modify</th>
+      <th class="col-xs-2 text-center">Name</th>
+      <th class="col-xs-2 text-center">Zone</th>
+      <th class="col-xs-2 text-center">Price</th>
+      <th class="col-xs-2 text-center">Stars</th>
+      <th class="col-xs-2 text-center">Likes</th>
+      <th class="col-xs-2 text-center">Modify</th>
     </tr>
   </table>
   <table class="table table-striped">
     <% @establishments.each do |e| %>
     <tr>
-      <td><strong><%= e.name %></strong></td>
-      <td><strong><%= e.zone %></strong></td>
-      <td><strong><%= e.price %></strong></td>
-      <td><strong><%= e.avg_qualification %></strong></td>
-      <td><strong><%= e.like_count %></strong></td>
-      <td><a href="<%= edit_establishment_path(e.id) %>" class="btn btn-primary"> Edit </a></td>
+      <td class="col-xs-2"><strong><%= e.name.capitalize %></strong></td>
+      <td class="col-xs-2 text-center"><strong><%= e.zone.capitalize %></strong></td>
+      <td class="col-xs-2 text-center"><strong><%= e.price %></strong></td>
+      <td class="col-xs-2 text-center"><strong><%= e.avg_qualification %></strong></td>
+      <td class="col-xs-2 text-center"><strong><%= e.like_count %></strong></td>
+      <td class="col-xs-2 text-center"><a href="<%= edit_establishment_path(e.id) %>" class="btn btn-primary"> Edit </a></td>
     </tr>
     <% end if @establishments.any? %>
   </table>
