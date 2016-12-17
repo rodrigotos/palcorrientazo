@@ -1,12 +1,36 @@
+<div style="text-align:center;">
 <% establishments.each do |e| %>
-<article class="row city">
-<ul class="list-unstyled" >
-  <li class="col-md-2">Nombre<strong><%= e.name %></strong></li>
-  <li class="col-md-2"><strong><%= e.zone %></strong></li>
-  <li class="col-md-2"><strong><%= e.price %></strong></li>
-  <li class="col-md-2"><strong><%= e.avg_qualification %></strong></li>
-  <li class="col-md-2"><strong><%= e.like_count %></strong></li>
-  <div class="ec-stars-wrapper">
+<table class="table table-striped">
+      <thead>
+        <th>Nombre</th>
+        <th>Zona</th>
+        <th>Precio</th>
+        <th>Estrellas</th>
+        <th>Likes</th>
+        <th>Calificame</th>
+        <th>Te gusto ?</th>
+      <tbody>
+                <tr>
+                  <td><strong><%= e.name %></strong></td>
+                  <td><strong><%= e.zone %></strong></td>
+                  <td><strong><%= e.price %></strong></td>
+                  <td><strong><%= e.avg_qualification %></strong></td>
+                  <td><strong><%= e.like_count %></strong></td>
+                  <td><button type="button" class="btn btn-primary" name="button">Calificar</button></td>
+                  <td><button type="button" class="btn btn-primary" name="button">Calificar</button></td>
+
+                </tr>
+              </tbody>
+        </table>
+
+        <% end %>
+
+
+        </div>
+
+
+
+  <!-- <div class="ec-stars-wrapper">
   <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
   <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
   <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
@@ -17,5 +41,3 @@
   <button type="button" class="btn btn-primary" name="button">Calificar</button>
 
 </ul>
-</article>
-<% end %>
