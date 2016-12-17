@@ -16,7 +16,7 @@
   <% establishments.each do |e| %>
   <tr>
     <td class="col-xs-2"><%= e.name.capitalize %></td>
-    <td class="col-xs-2 text-center"><%= e.zone.capitalize %></td>
+    <td class="col-xs-2 text-center"><%= e.zone %></td>
     <td class="col-xs-2 text-center"><strong><%= e.price %></strong></td>
     <td class="col-xs-1 text-center"><strong><%= e.avg_qualification %></strong></td>
     <td class="col-xs-1 text-center"><strong><%= e.like_count %></strong></td>
