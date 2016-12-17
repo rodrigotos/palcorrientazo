@@ -21,7 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Pal'Corrientazo </a>
+          <a class="navbar-brand" href="<%= root_path %>">Pal'Corrientazo </a>
           <div class="navbar-text"><%= current_user ? "| #{current_user.email}" : '' %></div>
         </div>
 
@@ -32,8 +32,16 @@
           <div class="form-group">
             <input name="establishment_name" type="text" class="form-control" placeholder="Search">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-default">Find</button>
           <% end %>
+          <ul class="nav navbar-nav">
+              <li class="link">
+                <a href="<%= new_establishment_path %>" class="link"><b>Add Corrientazo</b></a>
+      			  </li>
+              <li class="link">
+                <a href="<%= establishments_path %>" class="link"><b>My Corrientazo's</b></a>
+              </li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if !current_user %>
               <li class="link">

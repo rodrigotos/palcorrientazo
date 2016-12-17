@@ -1,5 +1,5 @@
 <% form_name ||= "Manage" %>
-<h1 class="text-center">  <%= form_name %> Establishment </h1>
+<h1 class="text-center">  <%= form_name %> Corrientazo </h1>
 <%= form_for @establishment , method: (form_name.downcase == 'edit' ? 'put' : 'post') do |f| %>
   <% if @establishment.errors.any? %>
       <div class="error" id="error_explanation">

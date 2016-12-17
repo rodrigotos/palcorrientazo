@@ -49,8 +49,9 @@
       <section>
         <%= form_tag general_search_establishments_path, method: :get, remote: true, class: "search-form", id: "establishment-general-search" do %>
         <div class="text-center">
+          <hr>
           <div class="form-group" style="width: 30%; display: flex;margin: 0 auto;">
-            <%= label_tag :zone%>
+            <%= label_tag :zone.capitalize%>
             <select name="establishment_zone" >
               <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
               <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
@@ -61,10 +62,11 @@
               <input style="width: 100%;float: left;" name="establishment_likes" type="range" max="100" min="0" sept="1">
             </div>
           </div>
-
-          <!-- SANTI NI POR EL PUTAS QUITE ESTO-->
+          <hr>
+          <!-- No quitar ni por pts-->
           <button type="submit" id="establishment-general-search-button" style="display:none;"></button>
-          <button type="button" id="clean-general-search-button" class="btn btn-warning"> Limpiar filtro </button>
+          <button type="button" id="clean-general-search-button" class="btn btn-warning"> Crear </button>
+          <hr>
         </div>
         <% end %>
       </section>

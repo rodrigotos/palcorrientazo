@@ -1,17 +1,17 @@
-<h1>Establishment Details</h1>
+<h1><%= "#{@establishment.name.capitalize }" %> </h1>
 <div class="container">
   <article class="row city">
     <div class="form-group">
-      <label> Name:</label>
-      <label><%= @establishment.name %> </label>
-    </div>
-    <div class="form-group">
       <label> Zone:</label>
-      <label><%= @establishment.zone %></label>
+      <label><%= @establishment.zone.capitalize %></label>
     </div>
     <div class="form-group">
       <label> Price:</label>
       <label><%= @establishment.price %></label>
+    </div>
+    <div class="form-group">
+      <label> Description:</label>
+      <text><%= @establishment.description %></text>
     </div>
   </article>
 </div>
@@ -35,16 +35,16 @@
   <div class="container">
     <table class="table">
       <tr>
-        <th class="col-md-2">User</th>
-        <th class="col-md-2">Qualification</th>
-        <th class="col-md-8">Comment</th>
+        <th class="col-md-2 text-center">User</th>
+        <th class="col-md-2 text-center">Qualification</th>
+        <th class="col-md-8 text-center">Comment</th>
       </tr>
     </table>
     <table class="table table-striped">
       <% @qualifications.each do |q| %>
       <tr>
-        <td class="col-md-2"><strong><%= q.user.email %></strong></td>
-        <td class="col-md-2"><strong><%= q.qualification %></strong></td>
+        <td class="col-md-2 text-center"><strong><%= q.user.email %></strong></td>
+        <td class="col-md-2 text-center"><strong><%= q.qualification %></strong></td>
         <td class="col-md-8"><%= q.comment %></td>
       </tr>
       <% end if @qualifications.any? %>
