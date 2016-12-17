@@ -48,19 +48,20 @@
   		<!-- End cssSlider.com -->
       <section>
         <%= form_tag general_search_establishments_path, method: :get, remote: true, class: "search-form", id: "establishment-general-search" do %>
-        <div class="form-group">
-          <div class="form-group">
+        <div class="text-center">
+          <div class="form-group" style="width: 30%; display: flex;margin: 0 auto;">
             <%= label_tag :zone%>
             <select name="establishment_zone" >
               <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
               <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
               <% end %>
             </select>
+            <div class="form-group"style="width: 46%; display: flex;margin: 0 5px 0 93px;">
+              <%= label_tag :likes%>
+              <input style="width: 100%;float: left;" name="establishment_likes" type="range" max="100" min="0" sept="1">
+            </div>
           </div>
-          <div class="form-group">
-            <%= label_tag :likes%>
-            <input style="width:20%;"name="establishment_likes" type="range" max="100" min="0" sept="1">
-          </div>
+
           <!-- SANTI NI POR EL PUTAS QUITE ESTO-->
           <button type="submit" id="establishment-general-search-button" style="display:none;"></button>
           <button type="button" id="clean-general-search-button" class="btn btn-warning"> Limpiar filtro </button>
