@@ -43,7 +43,7 @@ class EstablishmentsController < ApplicationController
   end
 
   def index
-    @establishments = Establishment.all
+    @establishments = current_user.establishments
   end
 
   def show
