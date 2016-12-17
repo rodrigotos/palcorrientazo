@@ -28,12 +28,10 @@
     </select>
   </div>
   <div class="form-group">
-    <%= f.label :longitude%>
-    <%= f.number_field :longitude, class: "form-control" ,id:"longitude", :step => "0.001", disabled: true%>
+    <%= f.hidden_field :longitude, class: "form-control" ,id:"longitude"%>
   </div>
   <div class="form-group">
-    <%= f.label :latitude%>
-    <%= f.number_field :latitude, class: "form-control", id:"latitude", :step => "0.001", disabled: true %>
+    <%= f.hidden_field :latitude, class: "form-control", id:"latitude" %>
   </div>
   <div class="form-group">
     <%= f.label :category%>
@@ -51,6 +49,6 @@
     <%= f.label :price%>
     <%= f.text_field :price, class: "form-control" %>
   </div>
-  <%= f.submit "#{form_name} task", class: "btn btn-lg boton-color btn-block" %>
+  <%= f.submit "#{form_name} establishment", class: "btn btn-lg boton-color btn-block" %>
   <a href="<%= establishments_path %>" class="btn btn-lg boton-color-dos btn-block"> View all </a>
 <% end %>

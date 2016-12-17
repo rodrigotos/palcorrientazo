@@ -19,6 +19,16 @@ class EstablishmentsController < ApplicationController
   end
 
   def update
+    @establishment = Establishment.find_by(id: params[:id])
+    @establishment.user = current_user
+    @establishment.state = true
+    if @establishment.update(establishment_params)
+      flash[:success] = "Establishment updated. Ok"
+      redirect_to establishments_path
+    else
+      flash[:error] = "Houston we are in troubles, try it again."
+      render 'edit'
+    end
   end
 
   def edit
