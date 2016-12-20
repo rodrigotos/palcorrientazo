@@ -21,7 +21,7 @@
     <td class="col-xs-1 text-center"><strong><%= e.avg_qualification %></strong></td>
     <td class="col-xs-1 text-center"><strong><%= e.like_count %></strong></td>
     <td class="col-xs-2 text-center"><a href="<%= establishment_path(e.id) %>" class="btn btn-primary"> Qualify </a></td>
-    <td class="col-xs-2 text-center"><button type="button" class="btn btn-primary" name="button">Like</button></td>
+    <td class="col-xs-2 text-center"><a href="<%= create_like_establishment_path(e.id) %>" class="btn btn-primary"> Like </a></td>
   </tr>
   <% end if establishments.any? %>
 </table>

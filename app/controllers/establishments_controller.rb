@@ -97,6 +97,23 @@ class EstablishmentsController < ApplicationController
     redirect_to establishment_path(@establishment)
   end
 
+  def create_like
+    @establishment = Establishment.find(params[:id])
+    @like = Like.new
+    @like.user_id = current_user.id
+    @like.establishment_id = @establishment.id
+    if @like.save
+        @like_count = @establishment.like_count + 1
+        @establishment.like_count = @like_count
+        if @establishment.save
+          flash[:success] = "Saved"
+        else
+          flash[:error] = "Houston we are in troubles, try it again."
+        end
+    end
+    redirect_to root_path
+  end
+
   private
 
   def establishment_params
