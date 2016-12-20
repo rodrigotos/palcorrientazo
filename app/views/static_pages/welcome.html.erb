@@ -52,7 +52,7 @@
           <hr>
           <div class="form-group" style="width: 30%; display: flex;margin: 0 auto;">
             <%= label_tag :zone.capitalize%>
-            <select name="establishment_zone" >
+            <select name="establishment_zone" class="styled-select blue semi-square" id="dd">
               <% ["Norte", "Sur", "Oriente", "Occidente"].each do |a| %>
               <option value="<%= a.downcase %>"> <%= "#{a}" %> </option>
               <% end %>
