@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def welcome
-    @establishments = Establishment.all
+    @establishments = Establishment.limit(5)
   end
 end
