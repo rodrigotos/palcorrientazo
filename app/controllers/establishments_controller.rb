@@ -74,7 +74,7 @@ class EstablishmentsController < ApplicationController
     ).where(
       zone: @zone
     ).where(
-      "like_count <= ? and like_count > 0", @likes.to_i
+      "like_count <= ? and like_count >= 0", @likes.to_i
     )
   end
 
